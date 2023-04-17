@@ -1,7 +1,7 @@
 import './App.css';
 import Main from './Components/Main';
 import TabContext from './Store/tab-context';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -14,19 +14,6 @@ function App() {
 
 
 
-  useEffect(() => {
-    var oldScrollY = window.scrollY;
-
-    window.onscroll = () => {
-      var element = document.querySelector('body');
-      console.log('here');
-      if(oldScrollY < window.scrollY){
-        console.log('down');
-      } else {
-        console.log('up');
-      }
-    }
-    }, []);
   return (
     <TabContext.Provider
       value={{

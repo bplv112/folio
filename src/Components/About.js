@@ -34,7 +34,7 @@ const About = () => {
 						<p className="max-w-2xl px-5 py-3 mr-3 mb-6 font-light text-md">I'm a seasoned full-stack developer with over a decade of experience in developing web applications and websites using popular technologies such as ReactJs, NodeJs, WordPress, and MySQL. I've successfully delivered more than 100 web projects to clients, implementing CD/CI pipelines and zero downtime deployments to achieve seamless continuous development and deployment.</p>
 					</div>
 					<div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-						<img src={aboutImage} alt="mockup" className="w-70-percent"/>
+						<img src={aboutImage} alt="mockup" className="w-70-percent rounded"/>
 					</div>
 				</div>
 			</section>
