@@ -3,12 +3,13 @@ import Canvas from './Canvas';
 
 function Header() {
 	return (
-		<div id="home" className='min-h-screen'>
+		<div id="home" className="relative">
 			<Canvas />
-			<header className='min-h-screen flex flex-col items-start pt-20-percent justify-center'>
+			<header className='header sm:right-0 sm:bottom-0'>
 				<div className="info">
-					<h1 className='text-3xl'> Howdy, I am <span className="bg-pr-3 font-press-start text-lg p-3">Biplav<span className="blink text-2xl">!</span></span></h1>
-					<p className='py-1 my-1'> In a love-hate relationship with programming.</p>
+					<h1 className='max-sm:text-xl text-6xl'> Howdy, I am <span className="bg-pr-3 font-press-start text-3xl p-3 max-sm:text-xl">Biplav<span className="blink text-3xl max-sm:text-xl">!</span></span></h1>
+					<p className='py-1 mt-3 text-xl max-sm:text-md'> Full stack Web Engineer && in-shower life contemplator.</p>
+					<p className='hidden py-1 mt-1 max-sm:flex'> Hit me on up on my socials! </p>
 				</div>
 			</header>
 		</div>

@@ -4,6 +4,7 @@ import Ammo from './animate/Ammo';
 import Asteroids from './animate/Asteroids';
 import Boom from './animate/Boom';
 import Stars from './animate/Stars';
+import useOnScreen from '../Utils/Utils';
 
 export default function Canvas() {
 	const canvas = React.useRef(),
@@ -19,6 +20,8 @@ export default function Canvas() {
 	const Rocks = [];
 	const Bombs = [];
 	const Bg    = [];
+	const isVisible = useOnScreen(canvas)
+
 	setInterval(() => {
 		Ammos.push( new Ammo(position.x + 100, position.y + 70) );
 		Rocks.push( new Asteroids(asteroidX, position.y + 50) );
@@ -27,11 +30,7 @@ export default function Canvas() {
 	/**
 	 * Animate the spaceship.
 	 */
-	const animate = () => {
-		requestAnimationFrame(animate);
-
-
-		const c  = canvas.current.getContext('2d');
+	const animate = (c) => {
 		c.width  = window.innerWidth;
 		c.height = window.innerHeight;
 		Player( c, position.x, position.y );
@@ -51,8 +50,6 @@ export default function Canvas() {
 		Ammos.forEach(fire => {
 			fire.update(c);
 		});
-
-
 
 		// animate asteroids
 		Rocks.forEach(fire => {
@@ -103,12 +100,31 @@ export default function Canvas() {
 	 * Wait for the dom mount to run animate.
 	 */
 	React.useEffect(() => {
-		animate();
-	}, []);
+
+		const c = canvas.current.getContext('2d');
+
+		let animationFrameId;
+		
+		//Our draw came here
+		const render = () => {
+		  if( !isVisible ) {
+			window.cancelAnimationFrame(animationFrameId)
+			return;
+		  }
+		  animate(c);
+		  animationFrameId = window.requestAnimationFrame(render);
+		}
+		render();
+		
+
+		return () => {
+		  window.cancelAnimationFrame(animationFrameId);
+		}
+	}, [animate]);
 
 	return (
-		<div className="canvas max-h-32">
-			<canvas id="arcade" ref={canvas} width="1200" height="400" ></canvas>
+		<div className="canvas max-h-screen max-w-100-percent">
+			<canvas id="arcade" ref={canvas} width={window.outerWidth} height={window.outerHeight} ></canvas>
 		</div>
 	);
 

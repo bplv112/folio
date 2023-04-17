@@ -1,26 +1,75 @@
+import am from './img/am.svg';
 const Content = () => {
 	return(
-		<div className="min-h-screen flex flex-col items-center justify-center">
-			<ol className="relative border-l border-gray-200 dark:border-gray-700">
-				<li className="mb-10 ml-4">
-					<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-					<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 2022</time>
-					<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Application UI code in Tailwind CSS</h3>
-					<p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-				</li>
-				<li className="mb-10 ml-4">
-					<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-					<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
-					<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
-					<p className="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
-				</li>
-				<li className="ml-4">
-					<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-					<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
-					<h3 className="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
-					<p className="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-				</li>
-			</ol>
+		<div className="min-h-screen flex flex-col justify-center">
+			<div
+				className="flex self-start flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
+				<img
+					className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+					src={am}
+					alt="" />
+				<div className="flex flex-col justify-start p-6">
+					<h5
+					className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+					Backend Engineer
+					</h5>
+					<p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Awesome Motive.
+					</p>
+
+				</div>
+			</div>
+
+			<div
+				className="flex self-end flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
+				<img
+					className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+					src={am}
+					alt="" />
+				<div className="flex flex-col justify-start p-6">
+					<h5
+					className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+					Backend Engineer
+					</h5>
+					<p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Awesome Motive.
+					</p>
+				</div>
+			</div>
+
+			<div
+				className="flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
+				<img
+					className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+					src={am}
+					alt="" />
+				<div className="flex flex-col justify-start p-6">
+					<h5
+					className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+					Backend Engineer
+					</h5>
+					<p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Awesome Motive.
+					</p>
+				</div>
+			</div>
+
+			<div
+				className="flex flex-col self-end rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
+				<img
+					className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+					src={am}
+					alt="" />
+				<div className="flex flex-col justify-start p-6">
+					<h5
+					className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+					Backend Engineer
+					</h5>
+					<p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Awesome Motive.
+					</p>
+				</div>
+			</div>
 		</div>
 	);
 }

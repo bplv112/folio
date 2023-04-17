@@ -1,27 +1,39 @@
-import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import Content from "./Content";
 import Nav from "./Nav";
 import PrimaryNav from "./PrimaryNav";
-import About from "./About";
+import Tabs from "./Tabs";
+import { useEffect } from "react";
 
-const Main = () => {
+// Initialization for ES Users
+import {
+	Tab,
+	Animate,
+	initTE,
+	Carousel,
+  } from "tw-elements";
+
+const Main = ( props ) => {
+	useEffect(() => {
+		initTE({ Tab, Animate, Carousel });
+	}, []);
+
 	return (
-		<main className="main">
-			<aside className="aside flex flex-col items-start fixed left-0 bottom-0 pr-10-percent">
-				<Nav />
-			</aside>
-			<div className="container mx-auto flex justify-center">
-				<div className="mt-10 px-4 max-w-screen-lg text-left mx-4">
-					<Header />
-					<About />
-					<Content />
-					<Footer />
+		<div className="">
+
+			<main className={'transition-all ease-in-out delay-150 main bplv-pr-' + props.tab}>
+				<div className="pri-nav">
+					<PrimaryNav />
 				</div>
-			</div>
-			<PrimaryNav />
-		</main>
+
+				<aside className="aside relative">
+					<Nav />
+				</aside>
+				<div className="container mx-auto flex justify-center">
+					<div className="mt-10 px-4 w-full text-left mx-4">
+						<Tabs />
+					</div>
+				</div>
+			</main>
+		</div>
 	);
 }
 

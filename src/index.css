@@ -8,19 +8,37 @@
 @layer base {
 	html {
 		@apply text-pr-6;
-		@apply bg-pr-5;
+
 		/* @apply font-press-start; */
 		@apply font-maven-pro;
 		@apply font-bold;
-		@apply text-xl;
+		@apply text-2xl;
 		scroll-behavior: smooth;
+		@apply max-h-screen;
 	}
 
 	body {
-		@apply p-5;
-		@apply m-5;
 		@apply text-left;
 	}
+
+	.main {
+		width: 98%;
+		margin: 1.25rem auto;
+		@apply p-5;
+		box-shadow: 0px 3px 15px rgb(0 0 0 / 52%);
+		border-radius: 6px;
+		overflow: hidden;
+		min-height: 95vh;
+		max-height: 100vh;
+	}
+	@media screen and (max-width: 768px) {
+		.main {
+			overflow: auto;
+			min-height: auto;
+			max-height: auto;
+		}
+	}
+
 }
 
 .blink {
@@ -48,4 +66,78 @@ ul.skills {
     -webkit-column-gap: 20px;
     column-count: 4;
     column-gap: 20px;
+}
+
+div.primary-nav {
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	height: 100%;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-content: flex-start;
+	align-items: flex-start;
+	left: 0;
+	top:0;
+	margin-top: 0.75rem;
+}
+
+.primary-nav ul li {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+	height: 100%;
+	padding: 60px 5px;
+	min-width: 60px;
+	width: 60px;
+	position: relative;
+	will-change: width;
+	cursor: pointer;
+	transform: matrix(1, 0, 0, 1, 0, 0);
+	font-size: 20px;
+}
+.primary-nav ul li a {
+	font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translateY(-50%) translateX(-50%) rotate(90deg);
+}
+
+.from-green-300 {
+    --tw-gradient-from: #86efac var(--tw-gradient-from-position);
+    --tw-gradient-from-position: ;
+    --tw-gradient-to: #86efac00 var(--tw-gradient-from-position);
+    --tw-gradient-to-position: ;
+    --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to)
+}
+
+.via-blue-500 {
+    --tw-gradient-via-position: ;
+    --tw-gradient-to: #3b82f600 var(--tw-gradient-to-position);
+    --tw-gradient-to-position: ;
+    --tw-gradient-stops: var(--tw-gradient-from),#3b82f6 var(--tw-gradient-via-position),var(--tw-gradient-to)
+}
+
+.to-purple-600 {
+    --tw-gradient-to: #9333ea var(--tw-gradient-to-position);
+    --tw-gradient-to-position:
+}
+
+.bplv-pr-home {
+	@apply bg-pr-home;
+}
+.bplv-pr-about {
+	@apply bg-pr-about;
+}
+.bplv-pr-project {
+	@apply bg-pr-project;
+}
+.header {
+	margin: 0;
+	position: absolute;
+	bottom: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
