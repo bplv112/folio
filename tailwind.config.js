@@ -29,6 +29,7 @@ module.exports = {
 			'100-percent': '100%',
 			'80-percent': '80%',
 			'90px': '90px',
+			'80screen': '80vh',
 		},
 		animation: {
 			background: 'background ease infinite',

@@ -4,7 +4,6 @@ import Ammo from './animate/Ammo';
 import Asteroids from './animate/Asteroids';
 import Boom from './animate/Boom';
 import Stars from './animate/Stars';
-import useOnScreen from '../Utils/Utils';
 
 export default function Canvas() {
 	const canvas = React.useRef(),
@@ -15,18 +14,21 @@ export default function Canvas() {
 
 	let asteroidX = 1100;
 
-	let speed = 0.8;
+	let speed = 0.3;
 	const Ammos = [];
 	const Rocks = [];
 	const Bombs = [];
 	const Bg    = [];
-	const isVisible = useOnScreen(canvas)
 
-	setInterval(() => {
-		Ammos.push( new Ammo(position.x + 100, position.y + 70) );
-		Rocks.push( new Asteroids(asteroidX, position.y + 50) );
-	}, 1000);
-
+	const [ height, setHeight ] = React.useState(null);
+	const [ width, setWidth ] = React.useState(null);
+	const div = React.useCallback(node => {
+	  if (node !== null) {
+		setHeight(node.getBoundingClientRect().height);
+		setWidth(node.getBoundingClientRect().width);
+	  }
+	}, []);
+	console.log(div);
 	/**
 	 * Animate the spaceship.
 	 */
@@ -62,7 +64,7 @@ export default function Canvas() {
 
 			// remove if gets beamed.
 			Ammos.forEach((beam, index) => {
-				if( beam.x > fire.x - 60 ) {
+				if( beam.x > fire.x - 40 ) {
 					Rocks.shift();
 					Ammos.splice(index, 1);
 					for( let i = 0; i < 10; i++){
@@ -100,31 +102,49 @@ export default function Canvas() {
 	 * Wait for the dom mount to run animate.
 	 */
 	React.useEffect(() => {
-
+		console.log('here');
 		const c = canvas.current.getContext('2d');
 
 		let animationFrameId;
-		
+		let interval;
+
 		//Our draw came here
 		const render = () => {
-		  if( !isVisible ) {
-			window.cancelAnimationFrame(animationFrameId)
-			return;
-		  }
 		  animate(c);
 		  animationFrameId = window.requestAnimationFrame(render);
 		}
+
+		interval = setInterval(() => {
+			Ammos.push( new Ammo(position.x + 100, position.y + 70) );
+			Rocks.push( new Asteroids(asteroidX, position.y + 50) );
+		}, 2000);
+
 		render();
-		
+
+		window.addEventListener('blur', (e) => {
+			console.log('blur');
+			clearInterval(interval);
+			window.cancelAnimationFrame(animationFrameId);
+		});
+
+		window.addEventListener('focus', (e) => {
+
+			interval = setInterval(() => {
+				Ammos.push( new Ammo(position.x + 100, position.y + 70) );
+				Rocks.push( new Asteroids(asteroidX, position.y + 50) );
+			}, 2000);
+			render();
+		});
 
 		return () => {
-		  window.cancelAnimationFrame(animationFrameId);
+		 <></>
 		}
-	}, [animate]);
+
+	}, []);
 
 	return (
-		<div className="canvas max-h-screen max-w-100-percent">
-			<canvas id="arcade" ref={canvas} width={window.outerWidth} height={window.outerHeight} ></canvas>
+		<div ref={div} className="h-80screen canvas max-h-screen max-w-100-percent h-100-percent">
+			<canvas id="arcade" ref={canvas} width={width} height={height - 200}></canvas>
 		</div>
 	);
 

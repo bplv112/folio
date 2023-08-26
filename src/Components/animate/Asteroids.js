@@ -10,13 +10,14 @@ export default class Asteroids {
 		this.rotation = 0.02;
 		let randomizer = (Math.floor(Math.random() * 2) == 0);
 		if(randomizer){
-			this.rotation = 0.02;
+			this.rotation = 0.01;
 		}else{
-			this.rotation = -0.02;
+			this.rotation = -0.01;
 		}
 	}
 
 	draw( c ) {
+
 		const img = new Image();
 		let self  = this;
 		img.src   = require('./assets/asteroid.png');
@@ -33,7 +34,7 @@ export default class Asteroids {
 
 	update( c ) {
 		this.draw(c);
-		this.x -= 2;
+		this.x -= 0.5;
 		this.angle += this.rotation;
 	}
 }
